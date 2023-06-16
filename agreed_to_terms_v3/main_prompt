@@ -1,0 +1,14 @@
+
+The backend of the application will leverage Python's Flask framework, MySQL database, and Auth0 for user authentication. Firstly, the backend will require a Flask-based search feature for users to query and retrieve company objects from the MySQL database. Each company object could have a one-to-many relationship with various types of legal documents, such as articles of incorporation, bylaws, shareholder agreements, patents, contracts, compliance documents, etc.
+
+Secondly, Flask will be used to implement an AI-based parsing feature, possibly utilizing a Python AI model like ChatGPT, to analyze the content of legal documents and generate a 10-question multiple-choice quiz. Given the variety of document types, the implementation of this feature must handle diverse document content and formats.
+
+Thirdly, a Flask-based evaluation system should be developed to grade user-submitted answers. This system will calculate the score and compare it against a passing mark of 80%. Achieving or exceeding the passing score will trigger a MySQL transaction to update the user's achievement record in the database.
+
+The user profile management system will use MySQL to store and manage user data, including a list of achievements, which will be a list of companies whose quizzes a user has passed. Each entry will include the name of the legal document associated with the quiz. Careful database management will be necessary given the database's capacity limit of 5GB.
+
+Auth0 will provide the robust and secure user authentication system needed for user registration, login, and password management. Flask will interface with Auth0's APIs to facilitate these functionalities.
+
+Finally, considering maintainability, the Flask application should follow best practices in code structure and organization. Unit and integration tests must be developed to ensure the functionality and reliability of the system. Future updates and modifications should be easy to implement, taking into account evolving user requirements or advancements in technology.
+
+This will be bundled as a python package API. Implement each function, do not use "pass".

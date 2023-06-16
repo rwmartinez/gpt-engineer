@@ -1,0 +1,79 @@
+from typing import List
+
+class Company:
+    def __init__(self, name: str, description: str):
+        self.name = name
+        self.description = description
+        self.legal_documents = []
+
+    def add_legal_document(self, document: LegalDocument) -> None:
+        """Adds a legal document to the company"""
+        self.legal_documents.append(document)
+
+    def remove_legal_document(self, document: LegalDocument) -> None:
+        """Removes a legal document from the company"""
+        self.legal_documents.remove(document)
+
+    def search_legal_documents(self, query: str) -> List[LegalDocument]:
+        """Searches for legal documents with the given query"""
+        results = []
+        for document in self.legal_documents:
+            if query in document.name:
+                results.append(document)
+        return results
+
+class LegalDocument:
+    def __init__(self, name: str, file_type: str, file_path: str):
+        self.name = name
+        self.file_type = file_type
+        self.file_path = file_path
+        self.content = ""
+
+    def parse_content(self) -> None:
+        """Parses the content of the legal document"""
+        # Implementation not provided
+
+    def generate_quiz(self) -> None:
+        """Generates a quiz based on the content of the legal document"""
+        # Implementation not provided
+
+class Quiz:
+    def __init__(self, questions: List[Question]):
+        self.questions = questions
+        self.score = 0
+
+    def submit_answers(self, answers: List[int]) -> None:
+        """Submits the user's answers to the quiz"""
+        for i, question in enumerate(self.questions):
+            if answers[i] == question.answer_index:
+                self.score += 1
+
+    def calculate_score(self) -> float:
+        """Calculates the user's score on the quiz"""
+        return self.score / len(self.questions) * 100
+
+class Question:
+    def __init__(self, text: str, choices: List[str], answer_index: int):
+        self.text = text
+        self.choices = choices
+        self.answer_index = answer_index
+
+class User:
+    def __init__(self, username: str, password: str):
+        self.username = username
+        self.password = password
+        self.achievements = []
+
+    def add_achievement(self, company_name: str, document_name: str) -> None:
+        """Adds an achievement to the user's profile"""
+        self.achievements.append(Achievement(company_name, document_name))
+
+    def view_achievements(self) -> None:
+        """Displays the user's achievements"""
+        for achievement in self.achievements:
+            print(f"{achievement.company_name}: {achievement.document_name}")
+
+class Achievement:
+    def __init__(self, company_name: str, document_name: str):
+        self.company_name = company_name
+        self.document_name = document_name
